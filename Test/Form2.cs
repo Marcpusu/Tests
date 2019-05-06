@@ -73,15 +73,23 @@ namespace Presentacio
             switch (dir)
             {
                 case Direction.Up:
+                    if (prevDir == Direction.Down)
+                        prevDir = Direction.None;
                     pnl.Top -= iDistance;
                     break;
                 case Direction.Down:
+                    if (prevDir == Direction.Up)
+                        prevDir = Direction.None;
                     pnl.Top += + iDistance;
                     break;
                 case Direction.Left:
+                    if (prevDir == Direction.Right)
+                        prevDir = Direction.None;
                     pnl.Left -= iDistance;
                     break;
                 case Direction.Right:
+                    if (prevDir == Direction.Left)
+                        prevDir = Direction.None;
                     pnl.Left += iDistance;
                     break;
                 default:
