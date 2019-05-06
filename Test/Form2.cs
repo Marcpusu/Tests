@@ -13,7 +13,8 @@ namespace Presentacio
     public partial class Form2 : Form
     {
         #region Global Vars
-        int iSpeed = 5;
+        const int iSpeed = 25;
+        const int iDistance = 2;
         #endregion
 
         private enum Direction
@@ -26,6 +27,8 @@ namespace Presentacio
         }
 
         Direction dir;
+        Direction prevDir;
+        Direction dirPressed;
         Timer timer1 = new Timer();
         List<Panel> lstWalls = new List<Panel>();
         public Form2()
@@ -34,6 +37,8 @@ namespace Presentacio
 
             lstWalls.Add(panel1);
             lstWalls.Add(panel2);
+            lstWalls.Add(panel3);
+            lstWalls.Add(panel4);
 
             timer1.Interval = iSpeed;
             timer1.Tick += new EventHandler(Timer_Tick);
@@ -42,59 +47,67 @@ namespace Presentacio
 
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
+            prevDir = dir;
+
             if (e.KeyCode == Keys.Up)
-                dir = Direction.Up;
+                dirPressed = Direction.Up;
             else if (e.KeyCode == Keys.Down)
-                dir = Direction.Down;
+                dirPressed = Direction.Down;
             else if (e.KeyCode == Keys.Left)
-                dir = Direction.Left;
+                dirPressed = Direction.Left;
             else if (e.KeyCode == Keys.Right)
-                dir = Direction.Right;
+                dirPressed = Direction.Right;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (Blocked())
-                return;
+            dir = dirPressed;
 
+            if (Blocked(dir))
+            {
+                dir = prevDir;
+                if (Blocked(prevDir))
+                    return;
+            }
+                
             switch (dir)
             {
                 case Direction.Up:
-                    pnl.Location = new Point(pnl.Location.X, pnl.Location.Y - 1);
+                    pnl.Top -= iDistance;
                     break;
                 case Direction.Down:
-                    pnl.Location = new Point(pnl.Location.X, pnl.Location.Y + 1);
+                    pnl.Top += + iDistance;
                     break;
                 case Direction.Left:
-                    pnl.Location = new Point(pnl.Location.X - 1, pnl.Location.Y);
+                    pnl.Left -= iDistance;
                     break;
                 case Direction.Right:
-                    pnl.Location = new Point(pnl.Location.X + 1, pnl.Location.Y);
+                    pnl.Left += iDistance;
                     break;
                 default:
                     break;
             }
         }
 
-        private bool Blocked()
+        private bool Blocked(Direction direction)
         {
             bool bBlocked = false;
 
             Rectangle r = new Rectangle(new Point(pnl.Location.X, pnl.Location.Y), pnl.Size);
 
-            switch (dir)
+            switch (direction)
             {
                 case Direction.Up:
-                    r.Location = new Point(pnl.Location.X, pnl.Location.Y - 1);
+                    r.Location = new Point(pnl.Location.X, pnl.Location.Y - iDistance);
                     break;
                 case Direction.Down:
-                    r.Location = new Point(pnl.Location.X, pnl.Location.Y + 1);
+                    r.Location = new Point(pnl.Location.X, pnl.Location.Y + iDistance);
                     break;
                 case Direction.Left:
-                    r.Location = new Point(pnl.Location.X - 1, pnl.Location.Y);
+                    r.Location = new Point(pnl.Location.X - iDistance, pnl.Location.Y);
                     break;
                 case Direction.Right:
-                    r.Location = new Point(pnl.Location.X + 1, pnl.Location.Y);
+                    r.Location = new Point(pnl.Location.X + iDistance, pnl.Location.Y);
                     break;
                 default:
                     break;
@@ -110,6 +123,11 @@ namespace Presentacio
             }
 
             return bBlocked;
+        }
+
+        private void Form2_KeyUp(object sender, KeyEventArgs e)
+        {
+            dir = prevDir;
         }
     }
 }
