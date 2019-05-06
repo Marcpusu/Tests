@@ -137,5 +137,7 @@ namespace Presentacio
         {
             dir = prevDir;
         }
+
+
     }
 }
