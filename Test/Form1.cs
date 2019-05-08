@@ -18,9 +18,9 @@ namespace Presentacio
         {
             InitializeComponent();
 
-            var fibonacciNumbers = new List<int> { 1, 1 };
+            var fibonacciNumbers = new List<long> { 1, 1 };
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 50; i++)
             {
                 var previous = fibonacciNumbers[i + 1];
                 var previous2 = fibonacciNumbers[i];
