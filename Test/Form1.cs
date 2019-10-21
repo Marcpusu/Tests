@@ -8,30 +8,77 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Threading;
 
 namespace Presentacio
 {
     public partial class Form1 : Form
     {
-        private Timer t;
+        //private Timer t;
         public Form1()
         {
+
+            
+
             InitializeComponent();
 
-            var fibonacciNumbers = new List<long> { 1, 1 };
+            DataGridView dataGrid = new DataGridView();
+            dataGrid.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGrid.Columns.Add(new DataGridViewTextBoxColumn());
 
-            for (int i = 0; i < 50; i++)
-            {
-                var previous = fibonacciNumbers[i + 1];
-                var previous2 = fibonacciNumbers[i];
+            dataGrid.Rows.Add();
+            dataGrid.Rows[0].Cells[0].Value = "3";
+            dataGrid.Rows[0].Cells[1].Value = "45,23";
+            dataGrid.Rows.Add();
+            dataGrid.Rows[1].Cells[0].Value = "3";
+            dataGrid.Rows[1].Cells[1].Value = "224,56";
+            dataGrid.Rows.Add();
+            dataGrid.Rows[2].Cells[0].Value = "3";
+            dataGrid.Rows[2].Cells[1].Value = "4,56";
+            dataGrid.Rows.Add();
+            dataGrid.Rows[3].Cells[0].Value = "4";
+            dataGrid.Rows[3].Cells[1].Value = "56,00";
+            dataGrid.Rows.Add();
+            dataGrid.Rows[4].Cells[0].Value = "5";
+            dataGrid.Rows[4].Cells[1].Value = "12,02";
+            dataGrid.Rows.Add();
+            dataGrid.Rows[5].Cells[0].Value = "6";
+            dataGrid.Rows[5].Cells[1].Value = "8,50";
 
-                fibonacciNumbers.Add(previous + previous2);
-            }
 
-            foreach (var item in fibonacciNumbers)
-            {
-                Console.WriteLine(item);
-            }
+            decimal sumcol = dataGrid.Rows.Cast<DataGridViewRow>().Where(x => x.Cells[0].Value != null && x.Cells[0].Value.ToString() == "3").ToList().Sum(y => Convert.ToDecimal(y.Cells[1].Value));
+
+            MessageBox.Show(sumcol.ToString());
+
+            this.Close();
+            //string s = @"[qwertre  pvifudjibjf   oifnvjfd isfnfdjo] - [onjgfjihbg] # [fuibguibgnifd] - [ofngjfidguign # uvdfuybgsf # isudgbiffg # uisdbghbsg] # [iudbfgibfdg]";
+            //string[] str = s.Split('#');
+
+            //string e = "";
+            //foreach (string st in str)
+            //{
+            //    e += st;
+            //    if (e.Trim().EndsWith("]"))
+            //    {
+            //        label1.Text += e + "\n";
+            //        e = "";
+            //    }
+            //}
+
+            //var fibonacciNumbers = new List<long> { 1, 1 };
+
+            //for (int i = 0; i < 50; i++)
+            //{
+            //    var previous = fibonacciNumbers[i + 1];
+            //    var previous2 = fibonacciNumbers[i];
+
+            //    fibonacciNumbers.Add(previous + previous2);
+            //}
+
+            //foreach (var item in fibonacciNumbers)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             //foreach (var item1 in fibonacciNumbers)
             //{
@@ -161,6 +208,12 @@ namespace Presentacio
             return result.AddDays(-3);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int i2 = 0;
+            var i = 8 / i2;
+        }
+
         //private static void T_Elapsed(object sender, ElapsedEventArgs e)
         //{
         //    t.Stop();
@@ -168,6 +221,26 @@ namespace Presentacio
         //    /// aqui pones el codigo para mostrar que gano
         //    ///
         //}
+
+
+        private void Excepcio(object sender, ThreadExceptionEventArgs t)
+        {
+            MessageBox.Show(t.Exception.ToString());
+            
+        }
+
+        private void Excepcio(object sender, UnhandledExceptionEventArgs t)
+        {
+            MessageBox.Show(t.ExceptionObject.ToString());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //int i2 = 0;
+            //var i = 8 / i2;
+
+            //string s = DateTime.UtcNow.ToString("o");
+        }
     }
 
     class ObjetoA
