@@ -14,8 +14,9 @@ using System.Threading;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using System.Reflection;
 
-namespace Presentacio
+namespace Test
 {
     static class Program
     {
@@ -38,6 +39,35 @@ namespace Presentacio
         [STAThread]
         static void Main()
         {
+            Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+            //CultureInfo Culture = new CultureInfo("es-ES", false);
+            //Thread.CurrentThread.CurrentCulture = Culture;
+            //Thread.CurrentThread.CurrentUICulture = Culture;
+
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
+            // Sort the returned array by name.
+            Array.Sort<CultureInfo>(cultures, new NamePropertyComparer<CultureInfo>());
+
+            foreach (var culture in cultures)
+            {
+                Console.Write("{0,-12} {1,-40}", culture.Name, culture.EnglishName);
+                try
+                {
+                    Console.WriteLine("{0}", CultureInfo.CreateSpecificCulture(culture.Name).Name);
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("(no associated specific culture)");
+                }
+            }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+
 
             //CultureInfo cl = new CultureInfo("es-ES");
             //NumberFormatInfo nfi = cl.NumberFormat;
@@ -370,10 +400,6 @@ namespace Presentacio
             //    archivo.ReadLine();
             //}
 
-            Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-
             //Phone(dr, "48-421-674-8974");
 
             //IEnumerable<int> numbers = new List<int>() { 1, 1, 1, 2, 1, 1 };
@@ -394,10 +420,6 @@ namespace Presentacio
 
             //    }
             //}
-
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
 
             //List<Personas> lstPersonas = new List<Personas>();
 
@@ -555,9 +577,48 @@ namespace Presentacio
             //}
 
             #endregion
+
+            #region Scientific anotations out
+
+            ////Result = "712577413488402631964821329"
+            //string a = "712569312664357328695151392";
+            //string b = "8100824045303269669937";
+
+            //double d1 = 0.0185;
+            //double d2 = 385;
+
+            //int i = 5;
+
+            //string r = (Convert.ToDouble(a) + Convert.ToDouble(b)).ToString();
+
+            //double d = 0;
+            //string re = (d1 / d2).ToString();
+
+            ////string res = string.Format("{0:F" + i + "}", Convert.ToDouble(re));
+            //string res = string.Format("{0:0#}", Convert.ToDouble(r));
+
+            //double.TryParse((d1 / d2).ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out d);
+
+            ////string res = d.ToString();
+            #endregion
+
         }
 
+        public class NamePropertyComparer<T> : IComparer<T>
+        {
+            public int Compare(T x, T y)
+            {
+                if (x == null)
+                    if (y == null)
+                        return 0;
+                    else
+                        return -1;
 
+                PropertyInfo pX = x.GetType().GetProperty("Name");
+                PropertyInfo pY = y.GetType().GetProperty("Name");
+                return String.Compare((string)pX.GetValue(x, null), (string)pY.GetValue(y, null));
+            }
+        }
 
         //private class Personas
         //{

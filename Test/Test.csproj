@@ -61,11 +61,53 @@
     <Compile Include="ctrlFirma.designer.cs">
       <DependentUpon>ctrlFirma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dades.cs" />
     <Compile Include="EventHandlerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EventHandlerForm.Designer.cs">
       <DependentUpon>EventHandlerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Extensions\DataGridViewDecimalsCell.cs" />
+    <Compile Include="Extensions\DataGridViewDecimalsColumn.cs" />
+    <Compile Include="Extensions\DataGridViewEntersCell.cs" />
+    <Compile Include="Extensions\DataGridViewEntersColumn.cs" />
+    <Compile Include="Extensions\extDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\extDataGridView.Designer.cs">
+      <DependentUpon>extDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\extDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\extDateTimePicker.Designer.cs">
+      <DependentUpon>extDateTimePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\extMaskedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\extMaskedTextBox.Designer.cs">
+      <DependentUpon>extMaskedTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\extTextBoxDecimals.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\extTextBoxDecimals.Designer.cs">
+      <DependentUpon>extTextBoxDecimals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\extTextBoxEnters.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\extTextBoxEnters.Designer.cs">
+      <DependentUpon>extTextBoxEnters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="extTextBoxDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="extTextBoxDate.Designer.cs">
+      <DependentUpon>extTextBoxDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

@@ -9,48 +9,89 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using System.Data.SqlClient;
+using ExtensionMethods;
 
-namespace Presentacio
+namespace Test
 {
     public partial class Form1 : Form
     {
         //private Timer t;
         public Form1()
         {
-
-            
+            Thread.CurrentThread.CurrentCulture = Dades.Culture;
+            Thread.CurrentThread.CurrentUICulture = Dades.Culture;
 
             InitializeComponent();
 
-            DataGridView dataGrid = new DataGridView();
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn());
+            //extDateTimePicker1.Format = DateTimePickerFormat.Custom;
+            //extDateTimePicker1.CustomFormat = Dades.Culture.DateTimeFormat.ShortDatePattern;
 
-            dataGrid.Rows.Add();
-            dataGrid.Rows[0].Cells[0].Value = "3";
-            dataGrid.Rows[0].Cells[1].Value = "45,23";
-            dataGrid.Rows.Add();
-            dataGrid.Rows[1].Cells[0].Value = "3";
-            dataGrid.Rows[1].Cells[1].Value = "224,56";
-            dataGrid.Rows.Add();
-            dataGrid.Rows[2].Cells[0].Value = "3";
-            dataGrid.Rows[2].Cells[1].Value = "4,56";
-            dataGrid.Rows.Add();
-            dataGrid.Rows[3].Cells[0].Value = "4";
-            dataGrid.Rows[3].Cells[1].Value = "56,00";
-            dataGrid.Rows.Add();
-            dataGrid.Rows[4].Cells[0].Value = "5";
-            dataGrid.Rows[4].Cells[1].Value = "12,02";
-            dataGrid.Rows.Add();
-            dataGrid.Rows[5].Cells[0].Value = "6";
-            dataGrid.Rows[5].Cells[1].Value = "8,50";
+            //extDateTimePicker1.Text = "23/11/2019";
+
+            extDataGridView1.Columns.Add(new DataGridViewEntersColumn());
+            extDataGridView1.Columns.Add(new DataGridViewDecimalsColumn());
+            
+
+            extDataGridView1.Rows.Add("6541", "68481.56", "52154");
+
+            extDateTimePicker1.Text = "2/11/2019";
+            extTextBoxEnters1.Text = "5491";
+
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(@"Data Source = SERVERDADES; Initial Catalog = PACA_RTEST;" +
+                " User ID=consulta;Password=consulta;"))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM aaa", con);
+
+                con.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                con.Close();
+            }
+
+            textBox1.Text = dt.Rows[2][1].ToString();
+
+            DateTime? dat = EsNull(dt.Rows[1][1]) ? new DateTime?() : Convert.ToDateTime(dt.Rows[1][1]);
+
+            MessageBox.Show(EsNullData(dat).ToString());
+
+            //dataGridView1.Columns.Add();
+
+            //textBox1.Text = Test.Properties.Settings.Default.UserName;
+
+            //DataGridView dataGrid = new DataGridView();
+            //dataGrid.Columns.Add(new DataGridViewTextBoxColumn());
+            //dataGrid.Columns.Add(new DataGridViewTextBoxColumn());
+
+            //dataGrid.Rows.Add();
+            //dataGrid.Rows[0].Cells[0].Value = "3";
+            //dataGrid.Rows[0].Cells[1].Value = "45,23";
+            //dataGrid.Rows.Add();
+            //dataGrid.Rows[1].Cells[0].Value = "3";
+            //dataGrid.Rows[1].Cells[1].Value = "224,56";
+            //dataGrid.Rows.Add();
+            //dataGrid.Rows[2].Cells[0].Value = "3";
+            //dataGrid.Rows[2].Cells[1].Value = "4,56";
+            //dataGrid.Rows.Add();
+            //dataGrid.Rows[3].Cells[0].Value = "4";
+            //dataGrid.Rows[3].Cells[1].Value = "56,00";
+            //dataGrid.Rows.Add();
+            //dataGrid.Rows[4].Cells[0].Value = "5";
+            //dataGrid.Rows[4].Cells[1].Value = "12,02";
+            //dataGrid.Rows.Add();
+            //dataGrid.Rows[5].Cells[0].Value = "6";
+            //dataGrid.Rows[5].Cells[1].Value = "8,50";
 
 
-            decimal sumcol = dataGrid.Rows.Cast<DataGridViewRow>().Where(x => x.Cells[0].Value != null && x.Cells[0].Value.ToString() == "3").ToList().Sum(y => Convert.ToDecimal(y.Cells[1].Value));
+            //decimal sumcol = dataGrid.Rows.Cast<DataGridViewRow>().Where(x => x.Cells[0].Value != null && x.Cells[0].Value.ToString() == "3").ToList().Sum(y => Convert.ToDecimal(y.Cells[1].Value));
 
-            MessageBox.Show(sumcol.ToString());
+            //MessageBox.Show(sumcol.ToString());
 
-            this.Close();
+            //this.Close();
+
             //string s = @"[qwertre  pvifudjibjf   oifnvjfd isfnfdjo] - [onjgfjihbg] # [fuibguibgnifd] - [ofngjfidguign # uvdfuybgsf # isudgbiffg # uisdbghbsg] # [iudbfgibfdg]";
             //string[] str = s.Split('#');
 
@@ -123,6 +164,8 @@ namespace Presentacio
             //    MessageBox.Show(z.ObjetoA.IdEstudiante.ToString() + z.ObjetoA.NombreEstudiante + z.ObjetoA.Fecha.ToString() + z.ObjetoB.NombreMateria + z.ObjetoB.Nota);
             //});
             //MessageBox.Show(FirstDateOfWeekISO8601(2019, GetWeekOfMonth(2019, 09)).ToString("dd/MM/yyyy"));
+
+
         }
 
         // Create brush.
@@ -134,6 +177,25 @@ namespace Presentacio
         {
             //Draw
             //Draw2DArray(sender, e, myPen, mybrush);
+        }
+
+        public object EsNullData(object data)
+        {
+            DateTime? Data = null;
+            if (!EsNull(data)) Data = Convert.ToDateTime(data);
+
+            if (Data == null)
+                return "null";
+            else
+                return "'" + ((DateTime)Data).ToDataBaseFormat() + "'";
+        }
+
+        public bool EsNull(object valor)
+        {
+            if (valor == DBNull.Value || valor == null || String.IsNullOrWhiteSpace(valor.ToString()) || valor.ToString() == "System.Data.DataRowView")
+                return true;
+            else
+                return false;
         }
 
         private void Draw2DArray(object sender, PaintEventArgs e, Pen p, Brush b)
@@ -210,8 +272,11 @@ namespace Presentacio
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int i2 = 0;
-            var i = 8 / i2;
+            //int i2 = 0;
+            //var i = 8 / i2;
+
+            Test.Properties.Settings.Default.UserName = textBox1.Text;
+            Test.Properties.Settings.Default.Save();
         }
 
         //private static void T_Elapsed(object sender, ElapsedEventArgs e)
@@ -236,10 +301,76 @@ namespace Presentacio
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Thread.CurrentThread.CurrentCulture = Dades.Culture;
+            //Thread.CurrentThread.CurrentUICulture = Dades.Culture;
             //int i2 = 0;
             //var i = 8 / i2;
 
             //string s = DateTime.UtcNow.ToString("o");
+
+            extTextBoxDecimals1.Text = "9954651565.00000000000999";
+            
+            extMaskedTextBox1.Text = new DateTime(2019,02,03).ToString();
+
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append('#', 4);
+
+            //textBox1.Text = FormatearNumero("98745618,451");
+
+            //foreach (int cultureInfo in new CultureInfo("zh-CHS").NumberFormat.NumberGroupSizes)
+            //{
+            //    Console.WriteLine(cultureInfo + "digits");
+            //}
+        }
+
+        //public string FormatearNumero(object Num)
+        //{
+        //    CultureInfo Culture = new CultureInfo("es-ES", false);
+        //    NumberStyles NStyle = NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign;
+        //    bool esUsuari = true;
+
+        //    string Numero = Num.ToString();
+
+        //    if (decimal.TryParse(Numero, NStyle, Culture, out decimal result))
+        //    {
+        //        if (result == 0)
+        //            return Numero;
+
+        //        if (esUsuari) //Boleano que indica si el valor se ha modificado por un usuario o no
+        //        {
+        //            if (Numero.Length > 2 && (Numero.Substring(0, 1) == "0" && Numero.Substring(1, 1) == Culture.NumberFormat.NumberDecimalSeparator && Num.ToString().Substring(2, 1) == "0"))
+        //                return Numero;
+
+        //            string[] str = Numero.Split(new string[] { Culture.NumberFormat.NumberDecimalSeparator }, StringSplitOptions.RemoveEmptyEntries);
+        //            decimal.TryParse(str[0], NStyle, Culture, out decimal res);
+        //            Numero = res.ToString("###" + Culture.NumberFormat.NumberGroupSeparator + "###" + Culture.NumberFormat.NumberGroupSeparator + "###", Culture);
+        //            Numero = (str.Length > 1) ? Numero + Culture.NumberFormat.NumberDecimalSeparator + str[1] : Numero;
+
+        //            if (Num.ToString().Substring(0, 1) == Culture.NumberFormat.NegativeSign && Num.ToString().Substring(1, 1) == "0")
+        //                Numero = Culture.NumberFormat.NegativeSign + Numero;
+
+        //            if (Num.ToString().Substring(0, 1) == "0")
+        //                Numero = "0" + Numero;
+        //            else if (Num.ToString().Substring(0, 1) == Culture.NumberFormat.NegativeSign)
+        //            {
+        //                if (Num.ToString().Substring(1, 1) == "0" && Num.ToString().Length > 2)
+        //                    Numero = Culture.NumberFormat.NegativeSign + "0" + Numero.Substring(1);
+        //                else
+        //                    Numero = Culture.NumberFormat.NegativeSign + Numero.Substring(1);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Numero = result.ToString("###,###.####", Culture);
+        //            //Numero = result.ToString("N", Culture);
+        //        }
+        //    }
+        //    return Numero;
+        //}
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //textBox1.Text = FormatearNumero(textBox1.Text);
         }
     }
 
