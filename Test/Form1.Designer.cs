@@ -127,6 +127,7 @@
             resources.ApplyResources(this.extDateTimePicker1, "extDateTimePicker1");
             this.extDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.extDateTimePicker1.Name = "extDateTimePicker1";
+            this.extDateTimePicker1.ShowCheckBox = true;
             // 
             // extTextBoxEnters1
             // 

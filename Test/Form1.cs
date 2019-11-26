@@ -38,25 +38,24 @@ namespace Test
             extDateTimePicker1.Text = "2/11/2019";
             extTextBoxEnters1.Text = "5491";
 
-            DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(@"Data Source = SERVERDADES; Initial Catalog = PACA_RTEST;" +
-                " User ID=consulta;Password=consulta;"))
-            {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM aaa", con);
+            //DataTable dt = new DataTable();
+            //using (SqlConnection con = new SqlConnection(@""))
+            //{
+            //    SqlCommand cmd = new SqlCommand("SELECT * FROM aaa", con);
 
-                con.Open();
+            //    con.Open();
 
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
+            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //    da.Fill(dt);
 
-                con.Close();
-            }
+            //    con.Close();
+            //}
 
-            textBox1.Text = dt.Rows[2][1].ToString();
+            //textBox1.Text = dt.Rows[2][1].ToString();
 
-            DateTime? dat = EsNull(dt.Rows[1][1]) ? new DateTime?() : Convert.ToDateTime(dt.Rows[1][1]);
+            //DateTime? dat = EsNull(dt.Rows[1][1]) ? new DateTime?() : Convert.ToDateTime(dt.Rows[1][1]);
 
-            MessageBox.Show(EsNullData(dat).ToString());
+            //MessageBox.Show(EsNullData(dat).ToString());
 
             //dataGridView1.Columns.Add();
 
