@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,59 +40,80 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.extTextBoxDecimals1 = new Test.extTextBoxDecimals(this.components);
-            this.extMaskedTextBox1 = new Test.Extensions.extMaskedTextBox(this.components);
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.extDateTimePicker1 = new Test.extDateTimePicker(this.components);
-            this.extTextBoxEnters1 = new Test.Extensions.extTextBoxEnters(this.components);
+            this.extDateTimePicker2 = new Test.extDateTimePicker(this.components);
             this.extDataGridView1 = new Test.extDataGridView(this.components);
+            this.extTextBoxEnters1 = new Test.Extensions.extTextBoxEnters(this.components);
+            this.extDateTimePicker1 = new Test.extDateTimePicker(this.components);
+            this.extMaskedTextBox1 = new Test.Extensions.extMaskedTextBox(this.components);
+            this.extTextBoxDecimals1 = new Test.extTextBoxDecimals(this.components);
+            this.extDateTimePicker3 = new Test.extDateTimePicker(this.components);
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.extDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
+            this.label1.AutoSize = true;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(342, 17);
             this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
             // 
             // button1
             // 
-            resources.ApplyResources(this.button1, "button1");
+            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.textBox1.Location = new System.Drawing.Point(100, 12);
             this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(226, 27);
+            this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Location = new System.Drawing.Point(12, 130);
             this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(226, 21);
+            this.comboBox1.TabIndex = 4;
             // 
             // dateTimePicker1
             // 
-            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 365);
             this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(198, 20);
+            this.dateTimePicker1.TabIndex = 6;
             // 
             // numericUpDown1
             // 
-            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
+            this.numericUpDown1.Location = new System.Drawing.Point(12, 78);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 7;
             this.numericUpDown1.Value = new decimal(new int[] {
             10000,
             0,
@@ -102,38 +122,30 @@
             // 
             // monthCalendar1
             // 
-            resources.ApplyResources(this.monthCalendar1, "monthCalendar1");
+            this.monthCalendar1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.monthCalendar1.Location = new System.Drawing.Point(12, 191);
             this.monthCalendar1.Name = "monthCalendar1";
-            // 
-            // extTextBoxDecimals1
-            // 
-            resources.ApplyResources(this.extTextBoxDecimals1, "extTextBoxDecimals1");
-            this.extTextBoxDecimals1.Name = "extTextBoxDecimals1";
-            this.extTextBoxDecimals1.NumDecimals = 4;
-            // 
-            // extMaskedTextBox1
-            // 
-            resources.ApplyResources(this.extMaskedTextBox1, "extMaskedTextBox1");
-            this.extMaskedTextBox1.Name = "extMaskedTextBox1";
+            this.monthCalendar1.TabIndex = 8;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dateTimePicker2, "dateTimePicker2");
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(138, 78);
             this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(213, 20);
+            this.dateTimePicker2.TabIndex = 10;
             // 
-            // extDateTimePicker1
+            // extDateTimePicker2
             // 
-            resources.ApplyResources(this.extDateTimePicker1, "extDateTimePicker1");
-            this.extDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.extDateTimePicker1.Name = "extDateTimePicker1";
-            this.extDateTimePicker1.ShowCheckBox = true;
-            // 
-            // extTextBoxEnters1
-            // 
-            resources.ApplyResources(this.extTextBoxEnters1, "extTextBoxEnters1");
-            this.extTextBoxEnters1.Name = "extTextBoxEnters1";
-            this.extTextBoxEnters1.PuntMilers = true;
+            this.extDateTimePicker2.CustomFormat = "M/d/yyyy";
+            this.extDateTimePicker2.Font = new System.Drawing.Font("Calibri", 9F);
+            this.extDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.extDateTimePicker2.Location = new System.Drawing.Point(462, 131);
+            this.extDateTimePicker2.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.extDateTimePicker2.Name = "extDateTimePicker2";
+            this.extDateTimePicker2.Size = new System.Drawing.Size(200, 22);
+            this.extDateTimePicker2.TabIndex = 2;
+            this.extDateTimePicker2.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 475);
             // 
             // extDataGridView1
             // 
@@ -160,7 +172,7 @@
             this.extDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.extDataGridView1.EnableHeadersVisualStyles = false;
             this.extDataGridView1.GridColor = System.Drawing.Color.GhostWhite;
-            resources.ApplyResources(this.extDataGridView1, "extDataGridView1");
+            this.extDataGridView1.Location = new System.Drawing.Point(216, 224);
             this.extDataGridView1.Name = "extDataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.GhostWhite;
@@ -170,11 +182,73 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.extDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.extDataGridView1.Size = new System.Drawing.Size(240, 161);
+            this.extDataGridView1.TabIndex = 13;
+            // 
+            // extTextBoxEnters1
+            // 
+            this.extTextBoxEnters1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.extTextBoxEnters1.Location = new System.Drawing.Point(216, 191);
+            this.extTextBoxEnters1.Name = "extTextBoxEnters1";
+            this.extTextBoxEnters1.PuntMilers = true;
+            this.extTextBoxEnters1.Size = new System.Drawing.Size(161, 27);
+            this.extTextBoxEnters1.TabIndex = 12;
+            // 
+            // extDateTimePicker1
+            // 
+            this.extDateTimePicker1.CustomFormat = "M/d/yyyy";
+            this.extDateTimePicker1.Font = new System.Drawing.Font("Calibri", 9F);
+            this.extDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.extDateTimePicker1.Location = new System.Drawing.Point(12, 157);
+            this.extDateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.extDateTimePicker1.Name = "extDateTimePicker1";
+            this.extDateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.extDateTimePicker1.TabIndex = 11;
+            this.extDateTimePicker1.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 482);
+            // 
+            // extMaskedTextBox1
+            // 
+            this.extMaskedTextBox1.Location = new System.Drawing.Point(12, 104);
+            this.extMaskedTextBox1.Name = "extMaskedTextBox1";
+            this.extMaskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.extMaskedTextBox1.TabIndex = 9;
+            // 
+            // extTextBoxDecimals1
+            // 
+            this.extTextBoxDecimals1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.extTextBoxDecimals1.Location = new System.Drawing.Point(12, 45);
+            this.extTextBoxDecimals1.Name = "extTextBoxDecimals1";
+            this.extTextBoxDecimals1.NumDecimals = 4;
+            this.extTextBoxDecimals1.Size = new System.Drawing.Size(612, 27);
+            this.extTextBoxDecimals1.TabIndex = 3;
+            // 
+            // extDateTimePicker3
+            // 
+            this.extDateTimePicker3.CustomFormat = "M/d/yyyy";
+            this.extDateTimePicker3.Font = new System.Drawing.Font("Calibri", 9F);
+            this.extDateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.extDateTimePicker3.Location = new System.Drawing.Point(256, 131);
+            this.extDateTimePicker3.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.extDateTimePicker3.Name = "extDateTimePicker3";
+            this.extDateTimePicker3.Size = new System.Drawing.Size(200, 22);
+            this.extDateTimePicker3.TabIndex = 1;
+            this.extDateTimePicker3.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 450);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(630, 50);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(151, 20);
+            this.textBox2.TabIndex = 14;
             // 
             // Form1
             // 
-            resources.ApplyResources(this, "$this");
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1119, 422);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.extDateTimePicker3);
+            this.Controls.Add(this.extDateTimePicker2);
             this.Controls.Add(this.extDataGridView1);
             this.Controls.Add(this.extTextBoxEnters1);
             this.Controls.Add(this.extDateTimePicker1);
@@ -189,6 +263,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
+            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -214,5 +289,8 @@
         private extDateTimePicker extDateTimePicker1;
         private Extensions.extTextBoxEnters extTextBoxEnters1;
         private extDataGridView extDataGridView1;
+        private extDateTimePicker extDateTimePicker2;
+        private extDateTimePicker extDateTimePicker3;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

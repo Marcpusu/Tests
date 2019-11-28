@@ -47,22 +47,22 @@ namespace Test
             //Thread.CurrentThread.CurrentCulture = Culture;
             //Thread.CurrentThread.CurrentUICulture = Culture;
 
-            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
-            // Sort the returned array by name.
-            Array.Sort<CultureInfo>(cultures, new NamePropertyComparer<CultureInfo>());
+            //CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
+            //// Sort the returned array by name.
+            //Array.Sort<CultureInfo>(cultures, new NamePropertyComparer<CultureInfo>());
 
-            foreach (var culture in cultures)
-            {
-                Console.Write("{0,-12} {1,-40}", culture.Name, culture.EnglishName);
-                try
-                {
-                    Console.WriteLine("{0}", CultureInfo.CreateSpecificCulture(culture.Name).Name);
-                }
-                catch (ArgumentException)
-                {
-                    Console.WriteLine("(no associated specific culture)");
-                }
-            }
+            //foreach (var culture in cultures)
+            //{
+            //    Console.Write("{0,-12} {1,-40}", culture.Name, culture.EnglishName);
+            //    try
+            //    {
+            //        Console.WriteLine("{0}", CultureInfo.CreateSpecificCulture(culture.Name).Name);
+            //    }
+            //    catch (ArgumentException)
+            //    {
+            //        Console.WriteLine("(no associated specific culture)");
+            //    }
+            //}
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -604,21 +604,21 @@ namespace Test
 
         }
 
-        public class NamePropertyComparer<T> : IComparer<T>
-        {
-            public int Compare(T x, T y)
-            {
-                if (x == null)
-                    if (y == null)
-                        return 0;
-                    else
-                        return -1;
+        //public class NamePropertyComparer<T> : IComparer<T>
+        //{
+        //    public int Compare(T x, T y)
+        //    {
+        //        if (x == null)
+        //            if (y == null)
+        //                return 0;
+        //            else
+        //                return -1;
 
-                PropertyInfo pX = x.GetType().GetProperty("Name");
-                PropertyInfo pY = y.GetType().GetProperty("Name");
-                return String.Compare((string)pX.GetValue(x, null), (string)pY.GetValue(y, null));
-            }
-        }
+        //        PropertyInfo pX = x.GetType().GetProperty("Name");
+        //        PropertyInfo pY = y.GetType().GetProperty("Name");
+        //        return String.Compare((string)pX.GetValue(x, null), (string)pY.GetValue(y, null));
+        //    }
+        //}
 
         //private class Personas
         //{

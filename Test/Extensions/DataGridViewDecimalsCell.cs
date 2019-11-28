@@ -13,6 +13,7 @@ namespace Test
         #region Dades
 
         public int NumDecimals { get; set; } = 4;
+        int NumDecimalsMes4Zeros = 3;
 
         bool omplir = true;
 
@@ -101,7 +102,10 @@ namespace Test
             }
             #endregion
 
-            Decimals = new StringBuilder().Append('#', NumDecimals + iNumZeros).ToString();
+            if (iNumZeros > 3)
+                Decimals = new StringBuilder().Append('#', NumDecimalsMes4Zeros + iNumZeros).ToString();
+            else
+                Decimals = new StringBuilder().Append('#', NumDecimals).ToString();
 
             string Numero = Num.ToString();
             if (decimal.TryParse(Numero, out decimal result))

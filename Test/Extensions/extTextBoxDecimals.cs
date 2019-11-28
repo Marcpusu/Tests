@@ -12,6 +12,7 @@ namespace Test
         #region Dades
 
         public int NumDecimals { get; set; } = 4;
+        int NumDecimalsMes4Zeros = 3;
 
         bool esUsuari = true;//flag que ens diu si està escrivint l'usuari o el programa
         bool bSkipTextChanged = false;
@@ -138,8 +139,11 @@ namespace Test
                     bDecimal = true;
             }
 
-            //Específiquem quants decimals hi haura sumant el valor per defecte dels decimals mes el númeo de 0 consecutius que hi ha després del separador de decimals
-            Decimals = new StringBuilder().Append('#', NumDecimals + iNumZeros).ToString();
+            //Específiquem quants decimals hi haura sumant el valor per defecte dels decimals mes el número de 0 consecutius que hi ha després del separador de decimals
+            if (iNumZeros > 3)
+                Decimals = new StringBuilder().Append('#', NumDecimalsMes4Zeros + iNumZeros).ToString();
+            else
+                Decimals = new StringBuilder().Append('#', NumDecimals).ToString();
 
             string Numero = Num.ToString();
 

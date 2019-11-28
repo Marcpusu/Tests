@@ -38,6 +38,12 @@ namespace Test
             extDateTimePicker1.Text = "2/11/2019";
             extTextBoxEnters1.Text = "5491";
 
+            extTextBoxDecimals1.Text = "0.000005154852";
+
+            //extDateTimePicker1.Valor = (1 == 1) ? (DateTime?)null : new DateTime(2019, 1, 1);
+
+            //extDateTimePicker1.Valor = null;
+
             //DataTable dt = new DataTable();
             //using (SqlConnection con = new SqlConnection(@""))
             //{
@@ -307,9 +313,12 @@ namespace Test
 
             //string s = DateTime.UtcNow.ToString("o");
 
-            extTextBoxDecimals1.Text = "9954651565.00000000000999";
-            
-            extMaskedTextBox1.Text = new DateTime(2019,02,03).ToString();
+            //extTextBoxDecimals1.Text = "9954651565.00000000000999";
+
+            //extMaskedTextBox1.Text = new DateTime(2019,02,03).ToString();
+            extTextBoxDecimals1.Text = "0.00009209";
+
+            textBox2.Text = new DateTime(2010, 2, 15, 2, 3, 4).ToString();
 
             //StringBuilder sb = new StringBuilder();
             //sb.Append('#', 4);
