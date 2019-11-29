@@ -31,8 +31,8 @@ namespace Test
             InitializeComponent();
 
             Format = DateTimePickerFormat.Custom;
-            CustomFormat = Dades.Culture.DateTimeFormat.ShortDatePattern;
-            Font = new Font("Calibri", 9, FontStyle.Regular);
+            Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            CalendarFont = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             MinDate = new DateTime(1900, 01, 01);
         }
 
@@ -43,10 +43,14 @@ namespace Test
             InitializeComponent();
 
             Format = DateTimePickerFormat.Custom;
-            CustomFormat = Dades.Culture.DateTimeFormat.ShortDatePattern;
-            Font = new Font("Calibri", 9, FontStyle.Regular);
+            Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            CalendarFont = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
             MinDate = new DateTime(1900, 01, 01);
-            Value = MinDate;
+        }
+
+        public void SetCustomFormat()
+        {
+            CustomFormat = Dades.Culture.DateTimeFormat.ShortDatePattern;
         }
     }
 }

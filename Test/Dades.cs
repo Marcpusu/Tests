@@ -9,7 +9,7 @@ namespace Test
 {
     public class Dades
     {
-        public static CultureInfo Culture = new CultureInfo("en-EN", false);
+        public static CultureInfo Culture = new CultureInfo("es-ES", false);
         public static CultureInfo DBCulture = new CultureInfo("es-ES", false);
         //public static string DateFormat = "dd" + Culture.DateTimeFormat.DateSeparator + "MM" + Culture.DateTimeFormat.DateSeparator + "yyyy";
         public static NumberStyles NStyle = NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign;
