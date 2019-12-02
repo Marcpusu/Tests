@@ -16,6 +16,8 @@ namespace Test
 {
     public partial class Form1 : Form
     {
+        Resize _form_resize;
+
         //private Timer t;
         public Form1()
         {
@@ -23,6 +25,8 @@ namespace Test
             Thread.CurrentThread.CurrentUICulture = Dades.Culture;
 
             InitializeComponent();
+
+            _form_resize = new Resize(this);
 
             //extDateTimePicker1.Format = DateTimePickerFormat.Custom;
             //extDateTimePicker1.CustomFormat = Dades.Culture.DateTimeFormat.ShortDatePattern;
@@ -310,7 +314,7 @@ namespace Test
             //Thread.CurrentThread.CurrentUICulture = Dades.Culture;
             //int i2 = 0;
             //var i = 8 / i2;
-
+            _form_resize._get_initial_size();
             //string s = DateTime.UtcNow.ToString("o");
 
             //extTextBoxDecimals1.Text = "9954651565.00000000000999";
@@ -379,6 +383,11 @@ namespace Test
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //textBox1.Text = FormatearNumero(textBox1.Text);
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            _form_resize._resize();
         }
     }
 

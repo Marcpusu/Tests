@@ -144,24 +144,28 @@
             // 
             // extDateTimePicker3
             // 
+            this.extDateTimePicker3.CalendarFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extDateTimePicker3.CustomFormat = "M/d/yyyy";
+            this.extDateTimePicker3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extDateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.extDateTimePicker3.Location = new System.Drawing.Point(256, 131);
             this.extDateTimePicker3.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.extDateTimePicker3.Name = "extDateTimePicker3";
-            this.extDateTimePicker3.Size = new System.Drawing.Size(200, 20);
+            this.extDateTimePicker3.Size = new System.Drawing.Size(200, 22);
             this.extDateTimePicker3.TabIndex = 1;
             this.extDateTimePicker3.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 450);
             this.extDateTimePicker3.Value = new System.DateTime(2019, 11, 28, 8, 36, 17, 450);
             // 
             // extDateTimePicker2
             // 
+            this.extDateTimePicker2.CalendarFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extDateTimePicker2.CustomFormat = "M/d/yyyy";
+            this.extDateTimePicker2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.extDateTimePicker2.Location = new System.Drawing.Point(462, 131);
             this.extDateTimePicker2.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.extDateTimePicker2.Name = "extDateTimePicker2";
-            this.extDateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.extDateTimePicker2.Size = new System.Drawing.Size(200, 22);
             this.extDateTimePicker2.TabIndex = 2;
             this.extDateTimePicker2.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 475);
             this.extDateTimePicker2.Value = new System.DateTime(2019, 11, 28, 8, 36, 17, 475);
@@ -215,11 +219,13 @@
             // 
             // extDateTimePicker1
             // 
+            this.extDateTimePicker1.CalendarFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extDateTimePicker1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.extDateTimePicker1.Location = new System.Drawing.Point(12, 157);
             this.extDateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.extDateTimePicker1.Name = "extDateTimePicker1";
-            this.extDateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.extDateTimePicker1.Size = new System.Drawing.Size(200, 22);
             this.extDateTimePicker1.TabIndex = 11;
             this.extDateTimePicker1.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 482);
             this.extDateTimePicker1.Value = new System.DateTime(2019, 11, 28, 8, 36, 17, 482);
@@ -244,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 422);
+            this.ClientSize = new System.Drawing.Size(790, 422);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.extDateTimePicker3);
             this.Controls.Add(this.extDateTimePicker2);
@@ -265,6 +271,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.extDataGridView1)).EndInit();
             this.ResumeLayout(false);
