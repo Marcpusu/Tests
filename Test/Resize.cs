@@ -9,7 +9,7 @@ namespace Test
     public class Resize
     {
         List<System.Drawing.Rectangle> _arr_control_storage = new List<System.Drawing.Rectangle>();
-        private bool showRowHeader = false;
+        private bool showRowHeader = true;
         public Resize(Form _form_)
         {
             form = _form_; //the calling form
@@ -30,8 +30,8 @@ namespace Test
             {
                 _arr_control_storage.Add(control.Bounds); //saves control bounds/dimension            
                                                           //If you have datagridview
-                if (control.GetType() == typeof(DataGridView))
-                    _dgv_Column_Adjust(((DataGridView)control), showRowHeader);
+                if (control.GetType() == typeof(extDataGridView))
+                    _dgv_Column_Adjust(((extDataGridView)control), showRowHeader);
             }
         }
 
@@ -64,19 +64,24 @@ namespace Test
                 //Assuming you have a datagridview inside a form()
                 //if you want to show the row header, replace the false statement of 
                 //showRowHeader on top/public declaration to true;
-                if (control.GetType() == typeof(DataGridView))
-                    _dgv_Column_Adjust(((DataGridView)control), showRowHeader);
+                if (control.GetType() == typeof(extDataGridView))
+                    _dgv_Column_Adjust(((extDataGridView)control), showRowHeader);
 
 
-                //Font AutoSize
-                control.Font = new System.Drawing.Font(form.Font.FontFamily,
-                 (float)(((Convert.ToDouble(_fontsize) * _form_ratio_width) / 2) +
-                  ((Convert.ToDouble(_fontsize) * _form_ratio_height) / 2)));
+                //Font AutoSize from Form Font
+                //control.Font = new System.Drawing.Font(form.Font.FontFamily,
+                //    (float)(((Convert.ToDouble(_fontsize) * _form_ratio_width) / 2) +
+                //    ((Convert.ToDouble(_fontsize) * _form_ratio_height) / 2)));
+
+                //Font AutoSize from Control Font
+                control.Font = new System.Drawing.Font(control.Font.FontFamily,
+                     (float)(((Convert.ToDouble(control.Font.Size) * _form_ratio_width) / 2) +
+                      ((Convert.ToDouble(control.Font.Size) * _form_ratio_height) / 2)));
 
             }
         }
 
-        private void _dgv_Column_Adjust(DataGridView dgv, bool _showRowHeader) //if you have Datagridview
+        private void _dgv_Column_Adjust(extDataGridView dgv, bool _showRowHeader) //if you have Datagridview
                                                                                //and want to resize the column base on its dimension.
         {
             int intRowHeader = 0;

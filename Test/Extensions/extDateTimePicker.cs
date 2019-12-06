@@ -8,7 +8,9 @@ namespace Test
 {
     public partial class extDateTimePicker : DateTimePicker
     {
-        public DateTime? Valor
+
+        [Browsable(false), Bindable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), ]
+        public DateTime? Valor 
         {
             get
             {

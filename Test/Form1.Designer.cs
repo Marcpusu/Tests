@@ -49,6 +49,8 @@
             this.extDateTimePicker1 = new Test.extDateTimePicker(this.components);
             this.extMaskedTextBox1 = new Test.Extensions.extMaskedTextBox(this.components);
             this.extTextBoxDecimals1 = new Test.extTextBoxDecimals(this.components);
+            this.extDateTimePicker4 = new Test.extDateTimePicker(this.components);
+            this.extTextBoxDecimals2 = new Test.extTextBoxDecimals(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.extDataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -122,6 +124,7 @@
             // 
             // monthCalendar1
             // 
+            this.monthCalendar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthCalendar1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.monthCalendar1.Location = new System.Drawing.Point(12, 191);
             this.monthCalendar1.Name = "monthCalendar1";
@@ -137,7 +140,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(630, 50);
+            this.textBox2.Location = new System.Drawing.Point(630, 45);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(151, 20);
             this.textBox2.TabIndex = 14;
@@ -145,7 +148,6 @@
             // extDateTimePicker3
             // 
             this.extDateTimePicker3.CalendarFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extDateTimePicker3.CustomFormat = "M/d/yyyy";
             this.extDateTimePicker3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extDateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.extDateTimePicker3.Location = new System.Drawing.Point(256, 131);
@@ -153,13 +155,11 @@
             this.extDateTimePicker3.Name = "extDateTimePicker3";
             this.extDateTimePicker3.Size = new System.Drawing.Size(200, 22);
             this.extDateTimePicker3.TabIndex = 1;
-            this.extDateTimePicker3.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 450);
-            this.extDateTimePicker3.Value = new System.DateTime(2019, 11, 28, 8, 36, 17, 450);
+            this.extDateTimePicker3.Value = new System.DateTime(2019, 12, 4, 13, 1, 49, 672);
             // 
             // extDateTimePicker2
             // 
             this.extDateTimePicker2.CalendarFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extDateTimePicker2.CustomFormat = "M/d/yyyy";
             this.extDateTimePicker2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.extDateTimePicker2.Location = new System.Drawing.Point(462, 131);
@@ -167,8 +167,7 @@
             this.extDateTimePicker2.Name = "extDateTimePicker2";
             this.extDateTimePicker2.Size = new System.Drawing.Size(200, 22);
             this.extDateTimePicker2.TabIndex = 2;
-            this.extDateTimePicker2.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 475);
-            this.extDateTimePicker2.Value = new System.DateTime(2019, 11, 28, 8, 36, 17, 475);
+            this.extDateTimePicker2.Value = new System.DateTime(2019, 12, 4, 13, 1, 49, 679);
             // 
             // extDataGridView1
             // 
@@ -227,8 +226,7 @@
             this.extDateTimePicker1.Name = "extDateTimePicker1";
             this.extDateTimePicker1.Size = new System.Drawing.Size(200, 22);
             this.extDateTimePicker1.TabIndex = 11;
-            this.extDateTimePicker1.Valor = new System.DateTime(2019, 11, 28, 8, 36, 17, 482);
-            this.extDateTimePicker1.Value = new System.DateTime(2019, 11, 28, 8, 36, 17, 482);
+            this.extDateTimePicker1.Value = new System.DateTime(2019, 12, 4, 13, 1, 49, 722);
             // 
             // extMaskedTextBox1
             // 
@@ -246,11 +244,32 @@
             this.extTextBoxDecimals1.Size = new System.Drawing.Size(612, 27);
             this.extTextBoxDecimals1.TabIndex = 3;
             // 
+            // extDateTimePicker4
+            // 
+            this.extDateTimePicker4.CalendarFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extDateTimePicker4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extDateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.extDateTimePicker4.Location = new System.Drawing.Point(462, 171);
+            this.extDateTimePicker4.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.extDateTimePicker4.Name = "extDateTimePicker4";
+            this.extDateTimePicker4.Size = new System.Drawing.Size(200, 22);
+            this.extDateTimePicker4.TabIndex = 15;
+            // 
+            // extTextBoxDecimals2
+            // 
+            this.extTextBoxDecimals2.Location = new System.Drawing.Point(579, 251);
+            this.extTextBoxDecimals2.Name = "extTextBoxDecimals2";
+            this.extTextBoxDecimals2.NumDecimals = 4;
+            this.extTextBoxDecimals2.Size = new System.Drawing.Size(100, 20);
+            this.extTextBoxDecimals2.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 422);
+            this.Controls.Add(this.extTextBoxDecimals2);
+            this.Controls.Add(this.extDateTimePicker4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.extDateTimePicker3);
             this.Controls.Add(this.extDateTimePicker2);
@@ -298,5 +317,7 @@
         private extDateTimePicker extDateTimePicker2;
         private extDateTimePicker extDateTimePicker3;
         private System.Windows.Forms.TextBox textBox2;
+        private extDateTimePicker extDateTimePicker4;
+        private extTextBoxDecimals extTextBoxDecimals2;
     }
 }

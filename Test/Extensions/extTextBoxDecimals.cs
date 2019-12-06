@@ -149,8 +149,8 @@ namespace Test
 
             if (decimal.TryParse(Numero, Dades.NStyle, Dades.Culture, out decimal result))
             {
-                if (result == 0)
-                    return Numero;
+                if (result.ToString() == "0")
+                    return "0";
 
                 if (esUsuari)
                 {

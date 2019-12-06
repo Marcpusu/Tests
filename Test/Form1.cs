@@ -11,6 +11,9 @@ using System.Globalization;
 using System.Threading;
 using System.Data.SqlClient;
 using ExtensionMethods;
+using System.DirectoryServices.AccountManagement;
+using System.DirectoryServices;
+using System.Text.RegularExpressions;
 
 namespace Test
 {
@@ -35,7 +38,11 @@ namespace Test
 
             extDataGridView1.Columns.Add(new DataGridViewEntersColumn());
             extDataGridView1.Columns.Add(new DataGridViewDecimalsColumn());
-            
+
+            extDateTimePicker1.SetCustomFormat();
+            extDateTimePicker2.SetCustomFormat();
+            extDateTimePicker3.SetCustomFormat();
+            extDateTimePicker4.SetCustomFormat();
 
             extDataGridView1.Rows.Add("6541", "68481.56", "52154");
 
@@ -308,21 +315,63 @@ namespace Test
             MessageBox.Show(t.ExceptionObject.ToString());
         }
 
+        public string EsNullDecimal(object valor)
+        {
+            if (!EsNull(valor) && esNumero(valor))
+                return Convert.ToDecimal(valor).ToString();
+            else
+                return string.Empty;
+        }
+
+        public static string NormalitzarText(string Text)
+        {
+            //Transformem a UNICODE
+            string sTextNormalitzat = Text.Normalize(NormalizationForm.FormD);
+            //Reemplaçem tot o que no coincideixi al Regex per espais
+            Regex reg = new Regex("[^a-zA-Z0-9 ]");
+            return reg.Replace(sTextNormalitzat, "");
+        }
+
+        public bool esNumero(object numero)
+        {
+            string n = numero.ToString();
+            double num;
+
+            if (n != string.Empty)
+            {
+                if (double.TryParse(n, out num))
+                    return true;
+                else
+                    return false;
+            }
+            else return true;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //Thread.CurrentThread.CurrentCulture = Dades.Culture;
             //Thread.CurrentThread.CurrentUICulture = Dades.Culture;
             //int i2 = 0;
             //var i = 8 / i2;
-            _form_resize._get_initial_size();
+            //_form_resize._get_initial_size();
             //string s = DateTime.UtcNow.ToString("o");
 
             //extTextBoxDecimals1.Text = "9954651565.00000000000999";
 
             //extMaskedTextBox1.Text = new DateTime(2019,02,03).ToString();
-            extTextBoxDecimals1.Text = "0.00009209";
+            extTextBoxEnters1.Text = EsNullDecimal("1000000");
+
+            extTextBoxDecimals2.Text = "1000000,5";
+
+            extTextBoxDecimals1.Text = Convert.ToDecimal(extTextBoxDecimals2.Text).ToString();
 
             textBox2.Text = new DateTime(2010, 2, 15, 2, 3, 4).ToString();
+
+            //GetActiveDirectoryUsers();
+
+            string sIdUsuari = CrearIdUsuari("Marc", "Puig");
+
+            MessageBox.Show(sIdUsuari);
 
             //StringBuilder sb = new StringBuilder();
             //sb.Append('#', 4);
@@ -333,6 +382,79 @@ namespace Test
             //{
             //    Console.WriteLine(cultureInfo + "digits");
             //}
+        }
+
+        private string CrearIdUsuari(string Nom, string Cognom)
+        {
+            string sIdUsuari = string.Empty;
+
+            if (EsNull(Nom) || EsNull(Cognom))
+                return sIdUsuari;
+
+            string[] sNom = NormalitzarText(Nom).Split(' ');
+            string[] sCognom = NormalitzarText(Cognom).Split(' ');
+
+            for (int i = 0; i < sNom[0].Length && ExisteixUsuariDomini(sIdUsuari); i++)
+            {
+                sIdUsuari = string.Empty;
+
+                for (int j = 0; j < sNom.Length; j++)
+                {
+                    if (j == 0)
+                        sIdUsuari += sNom[j].Substring(0, i +1);
+                    else
+                        sIdUsuari += sNom[j].Substring(0, 1);
+                }
+                sIdUsuari += sCognom[0];
+            }
+
+            if (ExisteixUsuariDomini(sIdUsuari)) throw new Exception("All possible usernames exist. Please contact with IT Team");
+
+            return sIdUsuari.ToLower();
+        }
+
+        private void GetActiveDirectoryUsers()
+        {
+            using (var context = new PrincipalContext(ContextType.Domain, "domain.com"))
+            {
+                using (var searcher = new PrincipalSearcher(new UserPrincipal(context)))
+                {
+                    foreach (var result in searcher.FindAll())
+                    {
+                        DirectoryEntry de = result.GetUnderlyingObject() as DirectoryEntry;
+                        Console.WriteLine("First Name: " + de.Properties["givenName"].Value);
+                        Console.WriteLine("Last Name : " + de.Properties["sn"].Value);
+                        Console.WriteLine("SAM account name   : " + de.Properties["samAccountName"].Value); //IdUsuari
+                        Console.WriteLine("User principal name: " + de.Properties["userPrincipalName"].Value);
+                        Console.WriteLine();
+                    }
+                }
+            }
+        }
+
+        private bool ExisteixUsuariDomini(string sIdUsuari)
+        {
+            bool bExist = false;
+
+            if (EsNull(sIdUsuari)) return true;
+
+            using (var context = new PrincipalContext(ContextType.Domain, "domain.com"))
+            {
+                using (var searcher = new PrincipalSearcher(new UserPrincipal(context) { SamAccountName = sIdUsuari }))
+                {
+                    foreach (var result in searcher.FindAll())
+                    {
+                        DirectoryEntry de = result.GetUnderlyingObject() as DirectoryEntry;
+                        if (de.Properties["samAccountName"].Value.ToString().ToLower() == sIdUsuari.ToLower())
+                        {
+                            bExist = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return bExist;
         }
 
         //public string FormatearNumero(object Num)
@@ -387,7 +509,7 @@ namespace Test
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            _form_resize._resize();
+            //_form_resize._resize();
         }
     }
 
