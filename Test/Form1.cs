@@ -318,7 +318,7 @@ namespace Test
         public string EsNullDecimal(object valor)
         {
             if (!EsNull(valor) && esNumero(valor))
-                return Convert.ToDecimal(valor).ToString();
+                return Convert.ToDouble(valor).ToString();
             else
                 return string.Empty;
         }
@@ -357,9 +357,10 @@ namespace Test
             //string s = DateTime.UtcNow.ToString("o");
 
             //extTextBoxDecimals1.Text = "9954651565.00000000000999";
+            decimal d2 = 0.0000000000051M;
 
             //extMaskedTextBox1.Text = new DateTime(2019,02,03).ToString();
-            extTextBoxEnters1.Text = EsNullDecimal("1000000");
+            extTextBoxDecimals1.Text = d2.ToString();
 
             extTextBoxDecimals2.Text = "1000000,5";
 
@@ -367,11 +368,20 @@ namespace Test
 
             textBox2.Text = new DateTime(2010, 2, 15, 2, 3, 4).ToString();
 
+            textBox1.Text = string.Join(", ", new List<string>());
+
             //GetActiveDirectoryUsers();
 
-            string sIdUsuari = CrearIdUsuari("Marc", "Puig");
+            //int io = int.Parse("4.500");
+            decimal ddo = decimal.Parse("4.500");
 
-            MessageBox.Show(sIdUsuari);
+            
+
+            //decimal d = Convert.ToDecimal("9,25263160709654E-05");
+
+            //string sIdUsuari = CrearIdUsuari("Marc", "Puig");
+
+            //MessageBox.Show(sIdUsuari);
 
             //StringBuilder sb = new StringBuilder();
             //sb.Append('#', 4);
