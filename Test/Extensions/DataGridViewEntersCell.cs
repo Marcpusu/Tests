@@ -51,10 +51,12 @@ namespace Test
 
         public string AfegirPuntMilers(object Num)
         {
-            decimal result = 0;
             string Numero = Num.ToString();
-            if (decimal.TryParse(Numero, out result))
+            if (decimal.TryParse(Numero, out decimal result))
                 Numero = result.ToString("###,###,###");
+
+            if (Numero == string.Empty)
+                Numero = "0";
 
             return Numero;
         }
