@@ -38,18 +38,21 @@ namespace Test
 
             extDataGridView1.Columns.Add(new DataGridViewEntersColumn());
             extDataGridView1.Columns.Add(new DataGridViewDecimalsColumn());
+            extDataGridView1.Columns.Add(new DataGridViewDateTimePickerColumn());
 
             extDateTimePicker1.SetCustomFormat();
             extDateTimePicker2.SetCustomFormat();
             extDateTimePicker3.SetCustomFormat();
             extDateTimePicker4.SetCustomFormat();
 
-            extDataGridView1.Rows.Add("6541", "68481.56", "52154");
+            extDataGridView1.Rows.Add("6541", "68481.56", "05/12/2019");
 
             extDateTimePicker1.Text = "2/11/2019";
             extTextBoxEnters1.Text = "5491";
 
             extTextBoxDecimals1.Text = "0.000005154852";
+
+            decimal d1 = Convert.ToDecimal(extTextBoxEnters1.Text);
 
             //extDateTimePicker1.Valor = (1 == 1) ? (DateTime?)null : new DateTime(2019, 1, 1);
 

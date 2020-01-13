@@ -66,6 +66,7 @@ namespace Test
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             Application.Run(new Form1());
 
 
@@ -132,6 +133,7 @@ namespace Test
 
             //    bandera = 1;
             //}
+
             //string str = "";
             //foreach (DataRow dataRow in nuevaTablaIdSig.Rows)
             //{

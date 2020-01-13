@@ -15,6 +15,7 @@ namespace Test
     {
         bool omplir = true;
         bool esUsuari = false;
+        extDateTimePicker oDateTimePicker;
 
         public extDataGridView()
         {
@@ -148,6 +149,64 @@ namespace Test
 
                 omplir = true;
             }
+        }
+
+        protected override void OnCellClick(DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == -1 || e.RowIndex == -1) return;
+
+            if (this.Columns[e.ColumnIndex].GetType() == typeof(DataGridViewDateTimePickerColumn))
+            {
+                //Initialized a new DateTimePicker Control  
+                if (oDateTimePicker == null)
+                {
+                    oDateTimePicker = new extDateTimePicker();
+
+                    oDateTimePicker.SetCustomFormat();
+
+                    //Adding DateTimePicker control into DataGridView   
+                    this.Controls.Add(oDateTimePicker);
+
+                    // An event attached to dateTimePicker Control which is fired when DateTimeControl is closed  
+                    oDateTimePicker.CloseUp += new EventHandler(oDateTimePicker_CloseUp);
+
+                    // An event attached to dateTimePicker Control which is fired when any date is selected  
+                    oDateTimePicker.TextChanged += new EventHandler(oDateTimePicker_OnTextChanged);
+
+                    oDateTimePicker.LostFocus += new EventHandler(oDateTimePicker_CloseUp);
+                }
+                
+                if (this.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null && DateTime.TryParse(this.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out DateTime dt))
+                    oDateTimePicker.Valor = dt;
+
+                // It returns the retangular area that represents the Display area for a cell  
+                Rectangle oRectangle = this.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+
+                //Setting area for DateTimePicker Control  
+                oDateTimePicker.Size = new Size(oRectangle.Width, oRectangle.Height - 3);
+
+                // Setting Location  
+                oDateTimePicker.Location = new Point(oRectangle.X, oRectangle.Y - 1);
+
+                // Now make it visible  
+                oDateTimePicker.Visible = true;
+
+                oDateTimePicker.Focus();
+            }
+
+            base.OnCellClick(e);
+        }
+
+        private void oDateTimePicker_OnTextChanged(object sender, EventArgs e)
+        {
+            // Saving the 'Selected Date on Calendar' into DataGridView current cell  
+            this.CurrentCell.Value = ((DateTime)oDateTimePicker.Valor).Date.ToShortDateString();
+        }
+
+        void oDateTimePicker_CloseUp(object sender, EventArgs e)
+        {
+            // Hiding the control after use   
+            oDateTimePicker.Visible = false;
         }
     }
 }
