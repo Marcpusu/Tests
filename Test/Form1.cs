@@ -54,6 +54,12 @@ namespace Test
 
             decimal d1 = Convert.ToDecimal(extTextBoxEnters1.Text);
 
+            for (int i = 1; i <= 12; i++)
+            {
+                int iX = i;
+                int iY = i;
+            }
+
             //extDateTimePicker1.Valor = (1 == 1) ? (DateTime?)null : new DateTime(2019, 1, 1);
 
             //extDateTimePicker1.Valor = null;

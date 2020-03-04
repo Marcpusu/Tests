@@ -64,10 +64,10 @@ namespace Test
             //    }
             //}
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
-            Application.Run(new Form1());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
+            //Application.Run(/*new NotifyIconTest()*/);
 
 
             //CultureInfo cl = new CultureInfo("es-ES");
@@ -602,6 +602,41 @@ namespace Test
             //double.TryParse((d1 / d2).ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out d);
 
             ////string res = d.ToString();
+            #endregion
+
+            #region Round to top nearest multiple of
+            int iNum = 50000;
+            int iMultiple = 600 * 24;
+
+            int iSol = 0;
+
+            if (iMultiple == 0)
+                iSol = iNum;
+            else
+            {
+                int iRemainder = iNum % iMultiple;
+                if (iRemainder == 0)
+                    iSol = iNum;
+                else
+                    iSol = iNum + iMultiple - iRemainder;
+            }
+
+            #endregion
+
+            #region Round to bottom nearest multiple of
+            iNum = 50000;
+            iMultiple = 600;
+
+            iSol = 0;
+
+            if (iMultiple > iNum)
+                iSol =  iMultiple;
+            else
+            {
+                iNum = iNum + iMultiple / 2;
+                iNum = iNum - (iNum % iMultiple);
+                iSol = iNum;
+            }
             #endregion
 
         }
