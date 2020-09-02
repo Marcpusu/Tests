@@ -1,6 +1,6 @@
 ﻿namespace Test
 {
-    partial class Form1
+    partial class frmControlsTest
     {
         /// <summary>
         /// Required designer variable.

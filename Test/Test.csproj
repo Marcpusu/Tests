@@ -71,26 +71,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ctrlDocBrowser.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ctrlDocBrowser.designer.cs">
-      <DependentUpon>ctrlDocBrowser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ctrlFirma.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ctrlFirma.designer.cs">
-      <DependentUpon>ctrlFirma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dades.cs" />
-    <Compile Include="EventHandlerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EventHandlerForm.Designer.cs">
-      <DependentUpon>EventHandlerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Classes\Dades.cs" />
+    <Compile Include="Classes\ExtensionMethods.cs" />
     <Compile Include="Extensions\DataGridViewDateTimePickerCell.cs" />
     <Compile Include="Extensions\DataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Extensions\DataGridViewDecimalsCell.cs" />
@@ -127,76 +109,36 @@
     <Compile Include="Extensions\extTextBoxEnters.Designer.cs">
       <DependentUpon>extTextBoxEnters.cs</DependentUpon>
     </Compile>
-    <Compile Include="extTextBoxDate.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="extTextBoxDate.Designer.cs">
-      <DependentUpon>extTextBoxDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\frmControlsTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\frmControlsTest.Designer.cs">
+      <DependentUpon>frmControlsTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Forms\frmDirectionTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Forms\frmDirectionTest.Designer.cs">
+      <DependentUpon>frmDirectionTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
+    <Compile Include="Forms\frmFormulariMovible.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormulariMovible.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormulariMovible.Designer.cs">
-      <DependentUpon>FormulariMovible.cs</DependentUpon>
-    </Compile>
-    <Compile Include="mntFirmesTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mntFirmesTest.designer.cs">
-      <DependentUpon>mntFirmesTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NotifyIconTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NotifyIconTest.Designer.cs">
-      <DependentUpon>NotifyIconTest.cs</DependentUpon>
+    <Compile Include="Forms\frmFormulariMovible.Designer.cs">
+      <DependentUpon>frmFormulariMovible.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Resize.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="ctrlFirma.resx">
-      <DependentUpon>ctrlFirma.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Classes\Resize.cs" />
+    <EmbeddedResource Include="Forms\frmControlsTest.resx">
+      <DependentUpon>frmControlsTest.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmDirectionTest.resx">
+      <DependentUpon>frmDirectionTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormulariMovible.resx">
-      <DependentUpon>FormulariMovible.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mntFirmesTest.resx">
-      <DependentUpon>mntFirmesTest.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmFormulariMovible.resx">
+      <DependentUpon>frmFormulariMovible.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -208,11 +150,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report.rdlc" />
-    <EmbeddedResource Include="Report1.rdlc" />
-    <EmbeddedResource Include="ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -256,23 +193,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Clase\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

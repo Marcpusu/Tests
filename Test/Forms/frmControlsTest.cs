@@ -17,12 +17,12 @@ using System.Text.RegularExpressions;
 
 namespace Test
 {
-    public partial class Form1 : Form
+    public partial class frmControlsTest : Form
     {
         Resize _form_resize;
 
         //private Timer t;
-        public Form1()
+        public frmControlsTest()
         {
             Thread.CurrentThread.CurrentCulture = Dades.Culture;
             Thread.CurrentThread.CurrentUICulture = Dades.Culture;
