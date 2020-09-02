@@ -19,11 +19,7 @@ namespace Test
         [STAThread]
         static void Main()
         {
-            #region GeneralExceptionManager_Main
-            Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-            #endregion
+            ChargeExceptionControl();
 
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
@@ -513,6 +509,13 @@ namespace Test
         #endregion
 
         #region GeneralExceptionManagement
+
+        private static void ChargeExceptionControl()
+        {
+            Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+        }
 
         private static void UIThreadException(object sender, ThreadExceptionEventArgs t)
         {
