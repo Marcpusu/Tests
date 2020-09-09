@@ -43,13 +43,13 @@ namespace Presentacio
 
         private void FormulariMovible_Load(object sender, EventArgs e)
         {
-            MoverVentana();
-            timer1.Start();
+            //MoverVentana();
+            //timer1.Start();
         }
 
         private void FormulariMovible_MouseEnter(object sender, EventArgs e)
         {
-            MoverVentana();
+            //MoverVentana();
         }
     }
 }

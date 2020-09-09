@@ -8,6 +8,8 @@ using System.Globalization;
 using System.Threading;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Presentacio;
+using System.Runtime.InteropServices;
 
 namespace Test
 {
@@ -23,8 +25,7 @@ namespace Test
 
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            //SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
-            //Application.Run(/*new NotifyIconTest()*/);
+            //Application.Run(new FormulariMovible());
         }
 
         private static void Fibonacci()
@@ -504,6 +505,51 @@ namespace Test
                 iPrev = iNumber;
                 iNumber = res;
             }
+        }
+
+        private static void Root13()
+        {
+            // https://www.codewars.com/kata/530e15517bc88ac656000716
+
+            string message = "Test";
+
+            string sRes = "";
+            char[] abc = "abcdefghijklmnopqrstuvwxyz".ToArray();
+
+            message.ToArray().ToList().ForEach(x =>
+            {
+                int i = abc.ToList().IndexOf(Char.ToLower(x)) - 13;
+                if (i < 0) i += abc.Length;
+                if (Char.IsLetter(x))
+                    sRes += Char.IsUpper(x) ? Char.ToUpper(abc[i]) : abc[i];
+                else
+                    sRes += x;
+            });
+
+            MessageBox.Show(sRes);
+        }
+
+        public static void WhitespaceNumber()
+        {
+            // https://www.codewars.com/kata/55b350026cc02ac1a7000032
+
+            int n = -1;
+            string sRes = "";
+
+            if (n > 0) sRes += ' ';
+            else if (n < 0)
+            {
+                sRes += '\t';
+                n *= -1;
+            }
+
+            Convert.ToString(n, 2).ToList().ForEach(x =>
+            {
+                sRes += x == '0' ?  ' ' : '\t';
+            });
+            sRes += '\n';
+
+            MessageBox.Show(sRes.Replace(" ", "[space]").Replace("\t", "[tab]").Replace("\n", "[LF]"));
         }
 
         #endregion
