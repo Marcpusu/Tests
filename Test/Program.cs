@@ -26,6 +26,8 @@ namespace Test
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormulariMovible());
+
+            MaximumSubarraySum();
         }
 
         private static void Fibonacci()
@@ -529,7 +531,7 @@ namespace Test
             MessageBox.Show(sRes);
         }
 
-        public static void WhitespaceNumber()
+        private static void WhitespaceNumber()
         {
             // https://www.codewars.com/kata/55b350026cc02ac1a7000032
 
@@ -550,6 +552,49 @@ namespace Test
             sRes += '\n';
 
             MessageBox.Show(sRes.Replace(" ", "[space]").Replace("\t", "[tab]").Replace("\n", "[LF]"));
+        }
+
+        private static void WhoLikesIt()
+        {
+            // https://www.codewars.com/kata/5266876b8f4bf2da9b000362
+
+            string sRes = "";
+
+            string[] name = { "Marc", "Lola", "Mento", "Tomas" };
+
+            if (name.Length == 0)
+                sRes = "no one likes this";
+            else if (name.Length == 1)
+                sRes = name[0] + " likes this";
+            else if (name.Length == 2)
+                sRes = name[0] + " and " + name[1] + " like this";
+            else if (name.Length == 3)
+                sRes = name[0] + ", " + name[1] + " and " + name[2] + " like this";
+            else
+                sRes = name[0] + ", " + name[1] + " and " + (name.Length -2).ToString() + " others like this";
+
+            MessageBox.Show(sRes);
+        }
+
+        private static void MaximumSubarraySum()
+        {
+            // https://www.codewars.com/kata/54521e9ec8e60bc4de000d6c
+
+            int[] arr = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+
+            int max = 0;
+            int current = 0;
+
+            for (int i=0;i<arr.Length;i++)
+            {
+                current = current + arr[i];
+                if (current < 0)
+                    current = 0;
+                if (max < current)
+                    max = current;
+            }
+
+            MessageBox.Show(max.ToString());
         }
 
         #endregion
